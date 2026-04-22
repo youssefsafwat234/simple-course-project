@@ -1,13 +1,15 @@
 import { sliceText } from "../../helper/function"
-import type { IProduct } from "../../interfaces" 
+import type { IProduct } from "../../interfaces"
 import Button from "../UI/Button"
 import Image from "../UI/Image"
- 
+
 interface IProps {
-    product: IProduct
+    product: IProduct,
+    onClickEditHandler: (product: IProduct) => void,
+    onClickDeleteHandler: (product: IProduct) => void
 }
 
-const ProductCard = ({ product }: IProps) => {
+const ProductCard = ({ product, onClickEditHandler, onClickDeleteHandler }: IProps) => {
     const { title = "", description = "", price = "", category = { name: "", imageURL: "" }, imageURL } = product || {}
     const colors = product.colors.map((color, index) => {
         return (
@@ -18,6 +20,8 @@ const ProductCard = ({ product }: IProps) => {
             />
         )
     })
+
+    // ================= Handlers ===============
     return (
         <div className="bg-gray-100 p-4 border-2 border-gray-300 rounded-md flex flex-col justify-between">
             <div className="overflow-hidden mb-3">
@@ -41,8 +45,8 @@ const ProductCard = ({ product }: IProps) => {
             </div>
 
             <div className="flex space-x-3 mt-5">
-                <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => console.log("Edit")}>Edit</Button>
-                <Button className="bg-red-500 hover:bg-red-700 " onClick={() => console.log("Destroy")}>Destroy</Button>
+                <Button className="bg-violet-700 hover:bg-violet-800" onClick={() => onClickEditHandler(product)} >Edit</Button>
+                <Button className="bg-red-500 hover:bg-red-700 " onClick={() => onClickDeleteHandler(product)}>Destroy</Button>
             </div>
         </div>
     )

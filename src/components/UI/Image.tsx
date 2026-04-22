@@ -1,5 +1,5 @@
 interface IProps {
-    imageUrl: string,
+    imageUrl?: string,
     altText: string,
     className?: string
 }

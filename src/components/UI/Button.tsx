@@ -1,7 +1,7 @@
 
-import type { ReactNode, ButtonHTMLAttributes } from "react"
+import type { ReactNode,  HTMLAttributes } from "react"
 
-interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface IProps extends HTMLAttributes<HTMLButtonElement> {
     className?: string;
     children?: ReactNode;
     width?: 'w-full' | 'w-fit' | 'w-auto' | 'w-1/2' | 'w-1/3' | 'w-1/4' | 'w-1/5' | 'w-1/6' | 'w-1/12';
